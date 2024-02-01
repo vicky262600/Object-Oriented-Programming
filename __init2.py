@@ -1,7 +1,7 @@
 class Item:
     pay_rate = 0.8
 
-    def __init__(self, name: str, price: float, quantity=0):
+    def __init__(self, name: str, price: float, quantity=1):
         # Run validation to the receive argument
         assert price >= 0, f"Price {price} is not greater than or equal to 0"
 
