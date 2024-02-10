@@ -26,7 +26,7 @@ item3 = Item("Ipot", "400", 4)
 item4 = Item("laptop", "1200", 2)
 item5 = Item("earbud", "300")
 
-# for instance in Item.all:
-#     print(instance.name)
+for instance in Item.all:
+    print(instance.name, instance.price, instance.quantity)
     
-print(Item.all)
+# print(Item.all)
