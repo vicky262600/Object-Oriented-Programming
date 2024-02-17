@@ -14,6 +14,9 @@ class Item:
         # Assign to self object
         Item.all.append(self)
 
+    def calculate_total_price(self):
+        return self.price * self.quantity if self.quantity > 0 else self.price
+    
     def pay_price(self):
         self.price = self.pay_rate * self.price
 
@@ -47,7 +50,7 @@ class Item:
 
     def __repr__(self):
         # return "Item"
-        return f"Item('{self.name}', {self.price}, {self.quantity})"
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
 
 
 Item.form_csv()
@@ -60,11 +63,25 @@ Item.form_csv()
 
 
 class Phone(Item):
-    pass
+    #  pay_rate = 0.8
+     all = []
+     def __init__(self, name: str, price: float, quantity=1, brokenPhone=0):
+        # assert price >= 0, f"Price {price} is not greater than or equal to 0"
+        # assert brokenPhone >= 0, f"brokenPhone {brokenPhone} is not greater than or equal to 0"
+        # call to super function to have access to all attribue/ methode
+        super().__init__(
+            name, price, quantity
+        )
 
-phone1 = Phone("iphone11", 1000, 2)
-phone1.brokenPhone = 1   
-phone2 = Phone("iphone12", 1100, 3)   
-phone2.brokenPhone = 2   
+        # self.name = name
+        # self.price = price
+        # self.quantity = quantity
+        self.brokenPhone = brokenPhone
 
-print(Phone)
+
+phone1 = Phone("iphone11", 1000, 2, 1)
+# print(phone1.calculate_total_price())
+phone2 = Phone("iphone12", 1100, 3)
+
+print(Item.all)
+# print(Phone.all)
